@@ -1,0 +1,34 @@
+# Segreti e dati personali: mai nel repository
+local.properties
+keystore.properties
+*.keystore
+*.jks
+*.p12
+.env
+.env.*
+*.env
+config-boss.json
+config-boss.json.*
+config-personale.json
+app/google-services.json
+google-services.json
+
+# Dati del telefono e delle prove (cronologia, registrazioni, schermate di lavoro)
+*.db
+*.db-journal
+cronologia*
+registrazioni/
+*.wav
+prove-locali/
+
+# Pacchetti e cartelle di compilazione (gli APK si pubblicano nelle Release, non nel repo)
+*.apk
+*.aab
+*.idsig
+dist/
+build/
+.gradle/
+.idea/
+*.iml
+.DS_Store
+__pycache__/

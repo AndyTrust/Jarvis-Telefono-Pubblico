@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Senza questo blocco, da Android 11 (API 30) in poi PackageManager
+         nasconde alla nostra app quasi tutti i pacchetti installati
+         (visibilità dei pacchetti / package visibility): getInstalledApplications()
+         e queryIntentActivities() restituiscono solo un sottoinsieme ristretto,
+         a meno che l'app che si cerca non sia dichiarata qui. Questo intent
+         standard dice al sistema "fammi vedere ogni app che ha un'icona nel
+         launcher", che è esattamente quello che serve a openApp() in
+         JarvisAccessibilityService per trovare Gmail e le altre app comuni. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+        <!-- 1.1.8: il dettato della chat usa il riconoscimento vocale di Google (voce/RiconoscitoreGoogle.kt).
+             Da Android 11 SpeechRecognizer e queryIntentServices non vedono il servizio senza questa riga. -->
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+        <!-- 1.2.0: le mani aprono le app vere con la bozza pronta (mani/ComponiIntent.kt). -->
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="mailto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.SENDTO" />
+            <data android:scheme="smsto" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.DIAL" />
+        </intent>
+    </queries>
+
+    <!-- 1.2.0 (Boss 2026-10-07: «tutte le app installate»): l'APK è privato, non passa da
+         Play, quindi si può vedere ogni pacchetto. Serve a elenca_app e apri_app. -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+    <!-- Rubrica: «manda un WhatsApp a Marco» trova il numero di Marco. Si chiede al primo uso. -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- «Accesso all'uso»: solo per mettere prima le app usate di recente. Permesso speciale,
+         lo concede Boss da Impostazioni (elenca_app con chiedi_permesso). -->
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
+    <!-- Solo per scaricare una volta i modelli della voce (Whisper, ERes2Net) da GitHub di k2-fsa:
+         Jarvis Telefono non parla con nessun server di Jarvis. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Per sapere se la rete è a consumo prima di scaricare i modelli della
+         voce (ImpostazioniActivity): senza, getNetworkCapabilities lancia
+         SecurityException. Permesso normale, concesso all'installazione. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- 1.2.2: vibrazione breve insieme ai segnali di attivazione, fatto, errore -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- 0.5.0: sveglia e timer messi davvero (AlarmClock.ACTION_SET_ALARM / SET_TIMER), permesso normale. -->
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    <!-- 0.4.2: accende lo schermo prima di un'azione detta a schermo spento (nucleo/Schermo.kt). -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- 0.4.0: impronta o PIN prima di mostrare un segreto (cassaforte/Sblocco.kt, BiometricPrompt di sistema).
+         Senza questa riga BiometricPrompt.authenticate lancia SecurityException e l'app si chiude (trovato sull'emulatore). -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <!-- 0.2.0 (Boss 07/10): niente tasto flottante e niente permesso «sopra le altre app»:
+         la bolla di stato e il pannello della conferma usano la finestra dell'accessibilità. -->
+
+    <application
+        android:name=".JBossApp"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/estrazione_dati"
+        android:fullBackupContent="@xml/backup_escluso"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Jarvis">
+
+
+        <!-- Jarvis Telefono (passo A, 2026-10-07): l'icona apre la schermata nativa (niente sito). -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Impostazioni (Rifondazione 1.0): collegamento, permessi, modelli,
+             glossario. La apre solo la schermata principale. -->
+        <activity
+            android:name=".ImpostazioniActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Jarvis"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <!-- 0.2.0: la schermata Agenti e Info e licenze (l'avviso MIT degli avatar). -->
+        <activity
+            android:name=".AgentiActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".LicenzeActivity"
+            android:exported="false" />
+
+        <!-- 0.2.0: la chat di ogni agente (dal menu Agenti e dal Postino in Home). -->
+        <activity
+            android:name=".AgenteChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <service
+            android:name=".JarvisService"
+            android:exported="false"
+            android:foregroundServiceType="microphone|dataSync" />
+
+        <!-- 0.7.0: un comando della chat va avanti con l'app in secondo piano (si ferma da solo a comando chiuso). -->
+        <service
+            android:name=".ServizioComando"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+
+        <!-- Riaccende Jarvis dopo un riavvio del telefono: l'app deve vivere
+             lì dentro, non dipendere da chi si ricorda di aprirla. -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".JarvisVoiceInteractionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION">
+            <intent-filter>
+                <action android:name="android.service.voice.VoiceInteractionService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.voice_interaction"
+                android:resource="@xml/voice_interaction_service" />
+        </service>
+
+        <service
+            android:name=".JarvisVoiceInteractionSessionService"
+            android:exported="true"
+            android:permission="android.permission.BIND_VOICE_INTERACTION" />
+
+        <service
+            android:name=".JarvisAccessibilityService"
+            android:exported="false"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_service_config" />
+        </service>
+
+        <receiver
+            android:name=".ConfirmActionReceiver"
+            android:exported="false" />
+
+        <!-- 1.2.0: interruttore di emergenza nella tendina («Mani di Jarvis»). -->
+        <service
+            android:name=".mani.InterruttoreTile"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="Mani di JBoss"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
+
+        <!-- 1.2.0: banco di prova da ADB. DUMP lo ha solo la shell di ADB: nessuna app lo può usare. -->
+        <receiver
+            android:name=".mani.ProvaAdbReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+
+        <!-- 0.3.0 modulo VPS (vps/): lavori lunghi sulla VPS, terminale a pieno schermo, conferme.
+             Il terminale non si ricrea quando ruota (il log resta dov'è) e il campo resta sopra la tastiera. -->
+        <activity
+            android:name=".vps.LavoriActivity"
+            android:exported="false" />
+        <activity
+            android:name=".vps.TerminaleVpsActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:screenOrientation="fullUser"
+            android:windowSoftInputMode="adjustResize" />
+        <receiver
+            android:name=".vps.AzioneVpsReceiver"
+            android:exported="false" />
+        <!-- 0.6.0 Collegamento Jarvis (collegamento/): la webapp del Command Center dentro JBoss e il giro delle
+             notifiche ogni 15 minuti (AlarmManager inesatto, ricevitore non esportato). -->
+        <activity
+            android:name=".collegamento.WebJarvisActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
+            android:exported="false"
+            android:label="Jarvis"
+            android:windowSoftInputMode="adjustResize" />
+        <receiver
+            android:name=".collegamento.GiroCollegamentoReceiver"
+            android:exported="false" />
+        <!-- 0.6.1: la sveglia della VPS (sveglia/SvegliaFcm.kt). Messaggi FCM ad alta priorità, solo dati: aprono il
+             canale delle mani per 3 minuti. Non esportato: lo chiama solo Google Play Services. -->
+        <service
+            android:name=".sveglia.SvegliaFcm"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- Niente raccolta automatica di Firebase oltre al token della sveglia. -->
+        <meta-data android:name="firebase_analytics_collection_deactivated" android:value="true" />
+        <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="true" />
+
+        <!-- Banco ADB del modulo VPS (scripts/configura-vps.sh). DUMP: solo la shell di ADB. -->
+        <receiver
+            android:name=".vps.ConfiguraVpsReceiver"
+            android:exported="true"
+            android:permission="android.permission.DUMP" />
+
+        <!-- Chiede la rubrica quando il cervello deve trovare un contatto. -->
+        <activity
+            android:name=".mani.RichiestaPermessoActivity"
+            android:exported="false"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+
+        <!-- 0.3.0: la chat Postino a numeri (dalla Home e dal menu Agenti). Le mail le legge la VPS; qui il
+             resoconto numerato, i comandi per numero e lo stato «eseguito» con la prova. Nessuna icona sua:
+             JBoss ha una sola icona. DUMP = solo la shell di ADB la apre da fuori (demo: extra booleano «demo»). -->
+        <activity
+            android:name=".postino.PostinoActivity"
+            android:exported="true"
+            android:permission="android.permission.DUMP"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- 0.4.0: le schermate di configurazione (configura/): procedura guidata, pagine delle Impostazioni
+             (cervello, posta, Google, VPS, sicurezza) e la casella. Viste scritte in codice: girando il telefono la
+             schermata non si ricrea (configChanges), così i campi scritti restano; la tastiera non copre i campi (adjustResize). -->
+        <activity
+            android:name=".configura.ConfigurazioneActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".configura.SchedaActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".configura.CasellaActivity"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize|keyboardHidden|keyboard"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+    </application>
+
+</manifest>

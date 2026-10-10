@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.2.0 (Boss 07/10): l'icona è Jarvis (Dots_Agenti_AI_HD/Jarvis/HD_originale) su fondo crema del
+     tema Claude; Jarvis sta nel 64% centrale (zona sicura). Monocromatica per le icone a tema. -->
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/icona_fondo" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+    <monochrome android:drawable="@mipmap/ic_launcher_monochrome" />
+</adaptive-icon>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.2.0: i token del tema in un posto solo (Boss 07/10: «tema Claude, moderno, con animazioni»).
+     Spaziatura a griglia di 8 dp, raggi, misure degli avatar e durate delle animazioni.
+     I colori stanno in values/colors.xml e values-night/colors.xml. -->
+<resources>
+    <!-- Griglia di 8 dp -->
+    <dimen name="spazio_mezzo">4dp</dimen>
+    <dimen name="spazio_1">8dp</dimen>
+    <dimen name="spazio_2">16dp</dimen>
+    <dimen name="spazio_3">24dp</dimen>
+    <dimen name="spazio_4">32dp</dimen>
+
+    <!-- Raggi: schede, pillole, campi -->
+    <dimen name="raggio_scheda">16dp</dimen>
+    <dimen name="raggio_pillola">24dp</dimen>
+    <dimen name="raggio_campo">24dp</dimen>
+    <dimen name="bordo">1dp</dimen>
+
+    <!-- Tocchi: mai sotto i 48 dp -->
+    <dimen name="tocco_minimo">48dp</dimen>
+
+    <!-- Avatar: file da 128 px fino a 56 dp, da 256 px per le schede -->
+    <dimen name="avatar_striscia">56dp</dimen>
+    <dimen name="avatar_riga">40dp</dimen>
+    <dimen name="avatar_cronologia">32dp</dimen>
+    <dimen name="avatar_bolla">36dp</dimen>
+    <dimen name="avatar_scheda">72dp</dimen>
+    <!-- Jarvis, il capo: più grande degli agenti (WebP da 256 px). -->
+    <dimen name="avatar_capo">88dp</dimen>
+    <dimen name="avatar_capo_cornice">108dp</dimen>
+    <dimen name="pallino_stato">12dp</dimen>
+
+    <!-- Testo -->
+    <dimen name="testo_titolo">24sp</dimen>
+    <dimen name="testo_titolo_scheda">18sp</dimen>
+    <dimen name="testo_corpo">15sp</dimen>
+    <dimen name="testo_piccolo">13sp</dimen>
+
+    <!-- Durate delle animazioni in ms: Android le moltiplica per la scala delle animazioni
+         (Opzioni sviluppatore / «Rimuovi animazioni» dell'accessibilità le porta a zero). -->
+    <integer name="durata_breve">150</integer>
+    <integer name="durata_media">220</integer>
+    <integer name="durata_lunga">300</integer>
+    <integer name="durata_pulsazione">900</integer>
+    <!-- Quanto si rimpicciolisce una scheda premuta, in millesimi (960 = 0,96). -->
+    <integer name="scala_pressione_millesimi">960</integer>
+
+    <bool name="barre_chiare">true</bool>
+</resources>

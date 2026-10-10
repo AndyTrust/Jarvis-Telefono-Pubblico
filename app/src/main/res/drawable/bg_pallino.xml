@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Il pallino di stato sull'avatar: il colore lo cambia il codice, il bordo lo stacca dal fondo. -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/spia_grigio" />
+    <stroke android:width="2dp" android:color="@color/jarvis_fondo" />
+</shape>

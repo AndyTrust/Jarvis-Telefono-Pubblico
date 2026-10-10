@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Il campo per parlare a Jarvis (Home) o a un agente (chat): Detta dentro il campo, Parla e
+     Invia a parte. Nella chat di un agente Parla non c'è (la voce va sempre a Jarvis). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/riga_composizione"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spazio_1"
+    android:gravity="bottom"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_campo"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/tocco_minimo"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spazio_2">
+
+        <EditText
+            android:id="@+id/campo_frase"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/scrivi_a_jarvis"
+            android:imeOptions="actionSend"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences|textMultiLine"
+            android:maxLines="4"
+            android:minHeight="@dimen/tocco_minimo"
+            android:paddingTop="@dimen/spazio_1"
+            android:paddingBottom="@dimen/spazio_1"
+            android:textColor="@color/jarvis_testo"
+            android:textColorHint="@color/jarvis_testo_tenue"
+            android:textSize="@dimen/testo_corpo" />
+
+        <ImageButton
+            android:id="@+id/tasto_detta"
+            style="@style/Jarvis.Icona"
+            android:contentDescription="@string/detta"
+            android:src="@drawable/ic_mic"
+            android:tooltipText="@string/detta"
+            app:tint="@color/jarvis_testo_tenue" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/tasto_parla"
+        style="@style/Jarvis.Icona"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/bg_icona_bordo"
+        android:contentDescription="@string/parla"
+        android:src="@drawable/ic_parla"
+        android:tooltipText="@string/parla"
+        app:tint="@color/jarvis_accento" />
+
+    <ImageButton
+        android:id="@+id/tasto_invia"
+        style="@style/Jarvis.Icona"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/bg_icona_piena"
+        android:contentDescription="@string/invia_a_jarvis"
+        android:src="@drawable/ic_invia"
+        android:tooltipText="@string/invia_a_jarvis"
+        app:tint="@color/jarvis_su_accento" />
+</LinearLayout>

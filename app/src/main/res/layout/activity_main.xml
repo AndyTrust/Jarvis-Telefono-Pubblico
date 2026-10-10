@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- JBoss 0.7.1, Home (layout approvato da Boss il 09/10):
+     JBoss                      [Lavori 2] [⚙]   ← badge = lavori VPS aperti
+     (JBoss) (Postino) (Ricercatore) (Social) (Mani) (Scrittore) (Jarvis)   ← in riga, scorre di lato
+     ● in ascolto                                ← tocco = Impostazioni → Voce
+     [Ricercatore: cerca…]                       ← chip solo mentre un agente lavora
+     [Agenti]                     [● Parla]     ← due tocchi grandi, vicino al pollice
+     Un tocco su un avatar apre la sua chat a tutto schermo (AgenteChatActivity); Postino la sua pagina,
+     Jarvis la webapp. Cronologia, campo e box del sì stanno nella chat, non più in Home.
+     Token in values/tokens.xml, colori in values/ e values-night/. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/radice"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/jarvis_fondo"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/spazio_2"
+    android:paddingTop="@dimen/spazio_1"
+    android:paddingEnd="@dimen/spazio_2"
+    android:paddingBottom="@dimen/spazio_1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/Jarvis.Titolo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/titolo" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tasto_lavori"
+            style="@style/Jarvis.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/tocco_minimo"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:minWidth="@dimen/tocco_minimo"
+            android:paddingStart="@dimen/spazio_2"
+            android:paddingEnd="@dimen/spazio_2"
+            android:text="@string/lavori"
+            android:tooltipText="@string/vps_lavori"
+            app:icon="@drawable/ic_monitor"
+            app:iconPadding="@dimen/spazio_1"
+            app:iconTint="@color/jarvis_accento" />
+
+        <ImageButton
+            android:id="@+id/tasto_impostazioni"
+            style="@style/Jarvis.Icona"
+            android:layout_marginStart="@dimen/spazio_mezzo"
+            android:contentDescription="@string/impostazioni"
+            android:src="@drawable/ic_impostazioni"
+            android:tooltipText="@string/impostazioni" />
+    </LinearLayout>
+
+    <!-- Gli avatar in riga, uno a fianco all'altro: JBoss (grande), poi gli agenti attivi e Jarvis (webapp).
+         Un tocco apre la chat a tutto schermo di quell'agente (Postino: la sua pagina; Jarvis: la webapp). -->
+    <HorizontalScrollView
+        android:id="@+id/scorri_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spazio_1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/riga_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/cella_jboss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/cornice_jarvis"
+                    android:layout_width="@dimen/avatar_capo_cornice"
+                    android:layout_height="@dimen/avatar_capo_cornice"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:contentDescription="@string/chat_jboss_avatar"
+                    android:focusable="true">
+
+                    <View
+                        android:id="@+id/anello_jarvis"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/avatar_jarvis"
+                        android:layout_width="@dimen/avatar_capo"
+                        android:layout_height="@dimen/avatar_capo"
+                        android:layout_gravity="center"
+                        android:importantForAccessibility="no" />
+                </FrameLayout>
+
+                <TextView
+                    style="@style/Jarvis.Corpo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="@string/nome_capo" />
+            </LinearLayout>
+            <!-- Le celle degli agenti (item_avatar_home) si aggiungono qui da MainActivity. -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Lo stato di JBoss (un tocco porta a Impostazioni → Voce) e il chip dell'agente che lavora -->
+    <LinearLayout
+        android:id="@+id/riga_stato"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spazio_1"
+        android:background="@drawable/bg_riga"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
+        android:minHeight="@dimen/tocco_minimo"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/spazio_1">
+
+        <View
+            android:id="@+id/spia"
+            android:layout_width="@dimen/pallino_stato"
+            android:layout_height="@dimen/pallino_stato"
+            android:background="@drawable/spia"
+            android:contentDescription="@string/descrizione_spia" />
+
+        <TextView
+            android:id="@+id/testo_spia"
+            style="@style/Jarvis.Corpo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spazio_1"
+            android:ellipsize="end"
+            android:maxLines="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/chips_jarvis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Due tocchi grandi vicino al pollice -->
+    <LinearLayout
+        android:id="@+id/riga_pollice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spazio_1"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tasto_agenti"
+            style="@style/Jarvis.Button.Outlined"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/agenti"
+            app:icon="@drawable/ic_agenti"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/spazio_1"
+            app:iconTint="@color/jarvis_accento" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/tasto_parla_grande"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/spazio_1"
+            android:layout_weight="1"
+            android:backgroundTint="@color/jarvis_accento"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:letterSpacing="0"
+            android:text="@string/parla"
+            android:textAllCaps="false"
+            android:textColor="@color/jarvis_su_accento"
+            android:textSize="16sp"
+            app:cornerRadius="@dimen/raggio_pillola"
+            app:icon="@drawable/ic_parla"
+            app:iconGravity="textStart"
+            app:iconPadding="@dimen/spazio_1"
+            app:iconTint="@color/jarvis_su_accento" />
+    </LinearLayout>
+
+</LinearLayout>

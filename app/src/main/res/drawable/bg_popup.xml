@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <solid android:color="@color/jarvis_rialzo" />
+    <stroke android:width="@dimen/bordo" android:color="@color/jarvis_linea" />
+    <corners android:radius="@dimen/raggio_scheda" />
+</shape>

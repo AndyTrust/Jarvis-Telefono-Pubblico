@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- L'alone dietro l'avatar dell'agente che lavora (pulsa). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/jarvis_velo_accento" />
+    <stroke android:width="2dp" android:color="@color/jarvis_accento" />
+</shape>

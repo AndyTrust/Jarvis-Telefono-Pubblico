@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.6.1, Agenti a elenco (layout approvato da Boss il 08/10):
+     ◉ Postino        ● VPS collegata   ›
+     tocco = chat dell'agente · pressione lunga = scheda (missione, dove lavora, autonomia) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_riga"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="64dp"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/spazio_1"
+    android:paddingEnd="@dimen/spazio_1">
+
+    <FrameLayout
+        android:layout_width="52dp"
+        android:layout_height="52dp">
+
+        <View
+            android:id="@+id/alone"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_alone"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="@dimen/avatar_riga"
+            android:layout_height="@dimen/avatar_riga"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spazio_2"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/nome"
+            style="@style/Jarvis.Corpo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/missione"
+            style="@style/Jarvis.Piccolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:breakStrategy="simple"
+            android:ellipsize="end"
+            android:maxLines="3" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/pallino"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/spia" />
+
+    <TextView
+        android:id="@+id/stato"
+        style="@style/Jarvis.Piccolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:maxWidth="132dp" />
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:importantForAccessibility="no"
+        android:src="@drawable/ic_avanti"
+        app:tint="@color/jarvis_testo_tenue" />
+</LinearLayout>

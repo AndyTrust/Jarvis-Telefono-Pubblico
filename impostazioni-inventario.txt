@@ -1,0 +1,44 @@
+Impostazioni a card (branch impostazioni-card, 2026-10-09)
+Inventario della schermata Impostazioni (ImpostazioniActivity.kt) prima e dopo.
+Le pagine dei gruppi (SchedaActivity e i pannelli) non cambiano: ogni impostazione vera resta dove era.
+
+PRIMA (0.6.7, elenco a righe)                          DOPO (0.6.7 card, card: res/layout/impostazioni_card.xml)
+-----------------------------------------------------  -----------------------------------------------------------
+ 1. Testa: indietro + titolo «Impostazioni»            uguale (BaseConfigura)
+ 2. Campo «Cerca un'impostazione…»                     uguale, sotto il titolo
+ 3. Risultati della ricerca (IndiceImpostazioni,       uguale: al posto delle card mentre si cerca (imp_risultati),
+    riga → pagina del gruppo)                          stessa riga con icona, «in <gruppo>», tocco → pagina
+ 4. Riga Voce → pagina Voce                            card Voce (card_voce) → pagina Voce
+    sottotitolo: acceso/spento · fine frase X s        stato uguale (imp_voce_stato)
+    · solo la mia voce
+ 5. Riga Postino e mail → pagina Postino e mail        card Postino e mail (card_posta) → pagina Postino e mail
+    sottotitolo: N caselle · Gmail                     numero caselle a destra (imp_posta_numero), testo intero per TalkBack
+ 6. Riga Collegamento Jarvis → pagina Collegamento     card Collegamento (card_collegamento) → pagina Collegamento
+    sottotitolo: ● stato del modulo VPS                pallino colorato + stato (imp_coll_pallino, imp_coll_stato)
+ 7. Riga Account e accessi → pagina Account            riga imp_riga_account → pagina Account, stesso sottotitolo
+ 8. Riga Sicurezza → pagina Sicurezza                  riga imp_riga_sicurezza → pagina Sicurezza
+    sottotitolo: blocco schermo ✓ / da impostare       stesso stato (imp_sicurezza_stato)
+ 9. Riga Aspetto → pagina Aspetto                      riga imp_riga_aspetto → pagina Aspetto
+    sottotitolo: tema … · animazioni ridotte           stesso stato (imp_aspetto_stato)
+10. Riga Informazioni → pagina Informazioni            riga imp_riga_info «Informazioni · Licenze» → pagina Informazioni;
+    sottotitolo: JBoss versione · licenze              anche la card profilo (card_profilo) apre Informazioni
+11. Bottone «Rifai la configurazione guidata»          riga imp_riga_rifai «Rifai configurazione» → procedura guidata
+12. Aggiornamento dei sottotitoli a ogni ritorno       uguale (onResume → aggiornaCarte)
+    (onResume)
+13. Companion: scarico dei modelli della voce          invariato, riga per riga (scaricando, reteLibera, scaricaDaFuori,
+                                                       esitoModelli, annullaScarico): lo usano Voce e la guidata
+
+AGGIUNTE DEL LAYOUT APPROVATO (scorciatoie a funzioni che esistevano già altrove, nessuna funzione nuova)
+- Card profilo: avatar JBoss (jboss_grande_256), «JBoss · versione».
+- «Aggiorna» nella card profilo = «Cerca aggiornamenti di JBoss» della pagina Collegamento (AggiornamentiJBoss.controllaOra),
+  esito sotto i collegamenti.
+- «Licenze» nella card profilo = «Info e licenze» della pagina Informazioni (LicenzeActivity).
+- Interruttore Voce = «JBoss acceso» della pagina Voce: stesso codice (PannelloVoce.accendiJBoss, estratto dal pannello).
+- Card Collegamento: avatar Jarvis (avatar_jarvis_128); «Webapp» = «Apri la webapp Jarvis», «Lavori» = «Lavori sulla VPS»,
+  «Memoria» = «Allinea la memoria adesso» della pagina Collegamento (gli stessi metodi).
+- Interruttore Sicurezza: mostra se il blocco schermo c'è; toccarlo apre le impostazioni di sicurezza di Android
+  (come «Imposta» della pagina Sicurezza): l'app non può accendere o spegnere il blocco da sola.
+
+CONTO
+Prima: 13 voci/azioni. Dopo: 13 voci/azioni, tutte presenti (nessuna persa), più 7 scorciatoie del layout approvato.
+Nota: il campo di ricerca non è nello schizzo approvato; resta perché è una funzione che c'era (regola: nessuna voce persa).

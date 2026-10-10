@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Anello terracotta intorno all'avatar che ascolta (pulsa). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="oval">
+    <solid android:color="@color/jarvis_velo_accento" />
+    <stroke android:width="3dp" android:color="@color/jarvis_accento" />
+</shape>

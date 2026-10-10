@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Barra degli agenti: Chiama (telefono), tondo verde chiaro. -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android" android:color="@color/jarvis_velo_accento">
+    <item>
+        <shape android:shape="oval"><solid android:color="@color/barra_chiama" /></shape>
+    </item>
+</ripple>

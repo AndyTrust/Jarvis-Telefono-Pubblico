@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.4.0: id delle viste scritte in codice nelle schermate di configurazione (servono a RadioGroup e al ripristino). -->
+<resources>
+    <item name="scelta_vps" type="id" />
+    <item name="scelta_api" type="id" />
+    <item name="scelta_codex" type="id" />
+</resources>

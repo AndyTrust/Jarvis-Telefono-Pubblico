@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La voce senza mani (09/10): popup della conversazione e notifica della voce.
+     File a parte da strings.xml, che cura l'agente della chat e della home. -->
+<resources>
+    <!-- Popup: intestazione secondo il modo -->
+    <string name="voce_popup_acceso_titolo">JBoss ascolta</string>
+    <string name="voce_popup_pausa_titolo">JBoss in pausa</string>
+    <string name="voce_popup_spento_titolo">JBoss non ascolta</string>
+    <!-- Popup: l'interruttore (il tocco accende e spegne) -->
+    <string name="voce_interruttore_acceso">● acceso</string>
+    <string name="voce_interruttore_pausa">◐ in pausa</string>
+    <string name="voce_interruttore_spento">○ spento</string>
+    <string name="voce_interruttore_descrizione">Accendi o spegni l\'ascolto di JBoss</string>
+    <!-- Popup: le ultime parole -->
+    <string name="voce_popup_parla_pure">«…parla pure…»</string>
+    <string name="voce_popup_ultime">«%1$s»</string>
+    <string name="voce_popup_non_ascolto">Il microfono è chiuso</string>
+    <string name="voce_popup_chiudi">Chiudi il popup</string>
+    <!-- Tasti (popup e notifica) -->
+    <string name="voce_tasto_pausa">Pausa</string>
+    <string name="voce_tasto_riprendi">Riprendi</string>
+    <string name="voce_tasto_spegni">Spegni</string>
+    <string name="voce_tasto_ascolta">Ascolta</string>
+    <string name="voce_tasto_esci">Esci</string>
+    <!-- Notifica persistente -->
+    <string name="voce_notifica_pausa">In pausa: non ascolto. Tocca Riprendi</string>
+    <string name="voce_notifica_spenta">Voce spenta: non ascolto. Tocca Riprendi</string>
+    <string name="voce_notifica_conversazione">Popup aperto: ti ascolto</string>
+    <!-- Bolla -->
+    <string name="voce_bolla_aggiunta">Aggiungo alla domanda</string>
+    <string name="voce_bolla_chiuso">Va bene, chiudo</string>
+</resources>

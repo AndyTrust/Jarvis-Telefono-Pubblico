@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Il chip di un agente che lavora per un titolare: avatar piccolo con anello che gira e cosa fa.
+     Compare con un rimbalzo, va via con dissolvenza e scorrimento (ui/AnimaAvatar). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spazio_mezzo"
+    android:background="@drawable/bg_pillola"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/tocco_minimo"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/spazio_mezzo"
+    android:paddingEnd="@dimen/spazio_2">
+
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp">
+
+        <View
+            android:id="@+id/anello"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:importantForAccessibility="no" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/testo"
+        style="@style/Jarvis.Piccolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spazio_mezzo"
+        android:ellipsize="end"
+        android:maxWidth="150dp"
+        android:maxLines="2"
+        android:textColor="@color/jarvis_testo" />
+</LinearLayout>

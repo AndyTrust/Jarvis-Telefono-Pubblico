@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 0.2.0: il tema Claude in modo scuro (segue il sistema). Stessi nomi di values/colors.xml.
+         Contrasti misurati sul fondo delle schede (#2A2927): testo 13,2:1, testo tenue 6,9:1,
+         accento 4,7:1, testo scuro sui pulsanti terracotta 5,3:1 (WCAG AA). -->
+    <color name="jarvis_fondo">#1F1E1D</color>
+    <color name="jarvis_rialzo">#2A2927</color>
+    <color name="jarvis_testo">#F5F4EF</color>
+    <color name="jarvis_testo_tenue">#B7B2A6</color>
+    <color name="jarvis_accento">#D97757</color>
+    <color name="spia_verde">#6CC08B</color>
+    <color name="spia_giallo">#E3B341</color>
+    <color name="spia_rosso">#F0857C</color>
+    <color name="spia_grigio">#8F8B80</color>
+    <color name="jarvis_primary_dark">#C2603F</color>
+    <color name="jarvis_linea">#3D3B37</color>
+    <color name="jarvis_su_accento">#1F1E1B</color>
+    <color name="jarvis_superficie_2">#353330</color>
+    <color name="jarvis_velo_accento">#40D97757</color>
+    <color name="jarvis_bolla_fondo">#F72A2927</color>
+    <color name="barra_parla">#3A3732</color>
+    <color name="barra_parla_icona">#D8D2C6</color>
+    <color name="barra_chiama">#28402F</color>
+    <color name="barra_chiama_icona">#8FD3A5</color>
+    <color name="barra_chiama_attiva">#6CC08B</color>
+    <color name="barra_campo">#2B2926</color>
+</resources>

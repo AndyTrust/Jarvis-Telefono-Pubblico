@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solo nel pacchetto di prova com.jarvis.telefono.prova: un nome diverso sull'icona, per non confonderlo con JBoss vero. -->
+<resources>
+    <string name="app_name">JBoss prova</string>
+</resources>

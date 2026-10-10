@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una risposta nella cronologia: avatar dell'agente che ha eseguito (o Jarvis, se l'ha fatto lui),
+     chi e quando, il testo, e l'esito letto dal sistema. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_riga"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/spazio_1"
+    android:paddingBottom="@dimen/spazio_1">
+
+    <FrameLayout
+        android:layout_width="@dimen/avatar_cronologia"
+        android:layout_height="@dimen/avatar_cronologia">
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
+            android:scaleType="fitCenter" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/chi_quando"
+            style="@style/Jarvis.Piccolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/testo"
+            style="@style/Jarvis.Corpo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/esito"
+            style="@style/Jarvis.Piccolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" />
+
+        <!-- Il dettaglio, al tocco: cervello, tempo, esito tecnico. -->
+        <TextView
+            android:id="@+id/dettaglio"
+            style="@style/Jarvis.Piccolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</LinearLayout>

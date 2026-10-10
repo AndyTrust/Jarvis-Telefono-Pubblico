@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Impostazioni a card, 0.6.7 card (layout approvato da Boss il 09/10): profilo JBoss, Voce, Postino, Collegamento Jarvis,
+  Account/Sicurezza/Aspetto, Informazioni e configurazione. Ogni card (o riga) apre la sua pagina (SchedaActivity);
+  i due interruttori agiscono subito. Va dentro la pagina che scorre di BaseConfigura, sotto il campo di ricerca.
+  Colori e misure: values/colors.xml, values/tokens.xml, values/themes.xml (Jarvis.Card, Jarvis.Interruttore).
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- I risultati della ricerca: al posto delle card mentre si cerca. -->
+    <LinearLayout
+        android:id="@+id/imp_risultati"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:id="@+id/imp_carte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- 1. Profilo: avatar JBoss, versione, Aggiorna · Licenze. Tocco → Informazioni. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_profilo"
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/jarvis_velo_accento">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/avatar_striscia"
+                    android:layout_height="@dimen/avatar_striscia"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/jboss_grande_256" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spazio_2"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/imp_profilo_titolo"
+                        style="@style/Jarvis.TitoloScheda"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/imp_link_aggiorna"
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/tocco_minimo"
+                            android:background="@drawable/bg_riga"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingEnd="@dimen/spazio_1"
+                            android:text="@string/imp_aggiorna"
+                            android:textColor="@color/jarvis_accento" />
+
+                        <TextView
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
+                            android:text="@string/imp_punto" />
+
+                        <TextView
+                            android:id="@+id/imp_link_licenze"
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/tocco_minimo"
+                            android:background="@drawable/bg_riga"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/spazio_1"
+                            android:paddingEnd="@dimen/spazio_1"
+                            android:text="@string/imp_licenze"
+                            android:textColor="@color/jarvis_accento" />
+                    </LinearLayout>
+
+                    <!-- L'ultimo esito di «Aggiorna» (vuoto finché non c'è). -->
+                    <TextView
+                        android:id="@+id/imp_profilo_esito"
+                        style="@style/Jarvis.Piccolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 2. Voce: stato e interruttore «JBoss acceso». Tocco → pagina Voce. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_voce"
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/jarvis_velo_accento">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/Jarvis.Corpo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/imp_voce"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/imp_voce_stato"
+                        style="@style/Jarvis.Piccolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/imp_voce_interruttore"
+                    style="@style/Jarvis.Interruttore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/imp_voce" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 3. Postino e mail: quante caselle. Tocco → pagina Postino e mail. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_posta"
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/jarvis_velo_accento">
+
+            <!-- 09/10: le due righe (Postino e mail, Agenti) una sotto l'altra. Prima stavano tutte e due
+                 dirette nella card (che è un FrameLayout) e si sovrapponevano: «Agentito e mail». -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/tocco_minimo"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Jarvis.Corpo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/imp_posta"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/imp_posta_numero"
+                    style="@style/Jarvis.Corpo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spazio_1"
+                    android:textColor="@color/jarvis_testo_tenue" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_avanti"
+                    app:tint="@color/jarvis_testo_tenue" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imp_agenti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_1"
+                android:background="@drawable/bg_riga"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:minHeight="@dimen/tocco_minimo"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/Jarvis.Corpo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Agenti"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/ic_avanti"
+                    app:tint="@color/jarvis_testo_tenue" />
+            </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 4. Collegamento Jarvis: avatar Jarvis, pallino di stato, Webapp · Lavori · Memoria. Tocco → pagina Collegamento. -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_collegamento"
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            android:clickable="true"
+            android:focusable="true"
+            app:rippleColor="@color/jarvis_velo_accento">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/avatar_striscia"
+                    android:layout_height="@dimen/avatar_striscia"
+                    android:importantForAccessibility="no"
+                    android:src="@drawable/avatar_jarvis_128" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spazio_2"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_collegamento"
+                            android:textSize="16sp" />
+
+                        <View
+                            android:id="@+id/imp_coll_pallino"
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_marginStart="@dimen/spazio_1"
+                            android:background="@drawable/spia" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/imp_coll_stato"
+                        style="@style/Jarvis.Piccolo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/imp_link_webapp"
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/tocco_minimo"
+                            android:background="@drawable/bg_riga"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingEnd="@dimen/spazio_1"
+                            android:text="@string/imp_webapp"
+                            android:textColor="@color/jarvis_accento" />
+
+                        <TextView
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
+                            android:text="@string/imp_punto" />
+
+                        <TextView
+                            android:id="@+id/imp_link_lavori"
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/tocco_minimo"
+                            android:background="@drawable/bg_riga"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/spazio_1"
+                            android:paddingEnd="@dimen/spazio_1"
+                            android:text="@string/imp_lavori"
+                            android:textColor="@color/jarvis_accento" />
+
+                        <TextView
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:importantForAccessibility="no"
+                            android:text="@string/imp_punto" />
+
+                        <TextView
+                            android:id="@+id/imp_link_memoria"
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/tocco_minimo"
+                            android:background="@drawable/bg_riga"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:paddingStart="@dimen/spazio_1"
+                            android:paddingEnd="@dimen/spazio_1"
+                            android:text="@string/imp_memoria"
+                            android:textColor="@color/jarvis_accento" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 5. Account, Sicurezza (blocco schermo), Aspetto: una card, tre righe, ognuna apre la sua pagina. -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            app:contentPadding="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/imp_riga_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spazio_2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_account"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_account_sotto" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_avanti"
+                        app:tint="@color/jarvis_testo_tenue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bordo"
+                    android:layout_marginStart="@dimen/spazio_2"
+                    android:background="@color/jarvis_linea" />
+
+                <LinearLayout
+                    android:id="@+id/imp_riga_sicurezza"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/spazio_2"
+                    android:paddingTop="@dimen/spazio_1"
+                    android:paddingEnd="@dimen/spazio_2"
+                    android:paddingBottom="@dimen/spazio_1">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_sicurezza"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/imp_sicurezza_stato"
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/imp_sicurezza_interruttore"
+                        style="@style/Jarvis.Interruttore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bordo"
+                    android:layout_marginStart="@dimen/spazio_2"
+                    android:background="@color/jarvis_linea" />
+
+                <LinearLayout
+                    android:id="@+id/imp_riga_aspetto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spazio_2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_aspetto"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/imp_aspetto_stato"
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_avanti"
+                        app:tint="@color/jarvis_testo_tenue" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- 6. Informazioni · Licenze e Rifai configurazione. -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Jarvis.Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spazio_1"
+            android:layout_marginBottom="@dimen/spazio_2"
+            app:contentPadding="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/imp_riga_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spazio_2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_info"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/imp_info_stato"
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_avanti"
+                        app:tint="@color/jarvis_testo_tenue" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/bordo"
+                    android:layout_marginStart="@dimen/spazio_2"
+                    android:background="@color/jarvis_linea" />
+
+                <LinearLayout
+                    android:id="@+id/imp_riga_rifai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_riga"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="56dp"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spazio_2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/Jarvis.Corpo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_rifai"
+                            android:textColor="@color/jarvis_accento"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            style="@style/Jarvis.Piccolo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/imp_rifai_sotto" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:importantForAccessibility="no"
+                        android:src="@drawable/ic_avanti"
+                        app:tint="@color/jarvis_testo_tenue" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</LinearLayout>

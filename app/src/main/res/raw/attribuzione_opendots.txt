@@ -1,0 +1,4 @@
+Personaggi derivati visivamente dai Dots di OpenDots / CopilotKit.
+Copyright (c) Atai Barkai. Licenza MIT originale allegata.
+Le varianti sono state generate con IA, usando le immagini fornite come riferimento.
+Mantenere l’avviso di copyright e la licenza con le immagini derivate.

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 1.2.3 (Boss 07/10: «come la chat di Jarvis, tema Claude, non nero»): la palette
+         Claude del sito (command-center/static/temi.css, data-tema="claude").
+         Prima era quella scura del Command Center (Rifondazione 1.0, 26/09/2026).
+         Gli stessi valori stanno in TestiStato.kt (object Tinte): la prova
+         TestiStatoTest controlla che non si separino. -->
+    <color name="jarvis_fondo">#FAF9F5</color>
+    <color name="jarvis_rialzo">#FFFFFF</color>
+    <color name="jarvis_testo">#1F1E1B</color>
+    <color name="jarvis_testo_tenue">#5C584C</color>
+    <color name="jarvis_accento">#B4532F</color>
+    <color name="spia_verde">#2B7443</color>
+    <color name="spia_giallo">#865700</color>
+    <color name="spia_rosso">#B3261E</color>
+    <color name="spia_grigio">#8F8B80</color>
+
+    <!-- I nomi di prima restano, perché li usano il widget flottante
+         (bg_round_button*), la sessione vocale e i temi: puntano alla palette
+         nuova, così tutta l'app ha gli stessi colori. -->
+    <color name="jarvis_background">@color/jarvis_fondo</color>
+    <color name="jarvis_surface">@color/jarvis_rialzo</color>
+    <color name="jarvis_primary">@color/jarvis_accento</color>
+    <color name="jarvis_primary_dark">#9D4626</color>
+    <color name="jarvis_accent">@color/spia_verde</color>
+    <color name="jarvis_text">@color/jarvis_testo</color>
+    <color name="jarvis_text_muted">@color/jarvis_testo_tenue</color>
+    <color name="jarvis_danger">@color/spia_rosso</color>
+    <!-- Crema scuro per bordi e righe, testo bianco sui pulsanti terracotta. -->
+    <color name="jarvis_linea">#E3DED2</color>
+    <color name="jarvis_su_accento">#FFFFFF</color>
+
+    <!-- 0.2.0 (Boss 07/10: tema Claude, moderno): i colori in più delle schermate nuove.
+         Il modo scuro ridefinisce TUTTI i nomi in values-night/colors.xml: il tema si cambia
+         solo in questi due file (più i token in values/tokens.xml). -->
+    <!-- Seconda superficie: binario dell'interruttore, campo di testo, bolla di Boss. -->
+    <color name="jarvis_superficie_2">#F0EEE6</color>
+    <!-- Velo della pressione e alone dell'agente che lavora. -->
+    <color name="jarvis_velo_accento">#33B4532F</color>
+    <!-- La bolla di stato e il pannello della conferma, sopra le altre app. -->
+    <color name="jarvis_bolla_fondo">#F7FFFFFF</color>
+    <!-- L'icona dell'app: fondo crema fisso (anche nel modo scuro, come ogni icona del launcher). -->
+    <color name="icona_fondo">#FAF9F5</color>
+    <color name="barra_parla">#ECE6DB</color>
+    <color name="barra_parla_icona">#5E5A52</color>
+    <color name="barra_chiama">#D9EEDC</color>
+    <color name="barra_chiama_icona">#2B7443</color>
+    <color name="barra_chiama_attiva">#2B7443</color>
+    <color name="barra_campo">#FFFFFF</color>
+</resources>

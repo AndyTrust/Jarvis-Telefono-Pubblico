@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.7.0: sopra il campo, la riga del comando e (solo se serve) il box del sì.
+     ● In corso: Apro WhatsApp… · 4 s                  ← riga di stato (in corso / da confermare / fatto / errore)
+     ┌ Serve il tuo sì ─────────────────────────────┐
+     │ Invio su WhatsApp a Marco                     │
+     │ «Arrivo alle 8»                               │
+     │                      [Annulla] [● Invia]      │  ← nessuna azione irreversibile senza questo tocco
+     └───────────────────────────────────────────────┘
+     Colori e misure da values/colors.xml e values/tokens.xml. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/vista_comando"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/riga_comando"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spazio_1"
+        android:accessibilityLiveRegion="polite"
+        android:gravity="center_vertical"
+        android:minHeight="32dp"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spazio_1"
+        android:paddingEnd="@dimen/spazio_1"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/spia_comando"
+            android:layout_width="@dimen/pallino_stato"
+            android:layout_height="@dimen/pallino_stato"
+            android:background="@drawable/spia"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/testo_comando"
+            style="@style/Jarvis.Piccolo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spazio_1"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/box_conferma"
+        style="@style/Jarvis.Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spazio_1"
+        android:visibility="gone"
+        app:strokeColor="@color/jarvis_accento"
+        app:strokeWidth="1dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:accessibilityLiveRegion="assertive"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Jarvis.Piccolo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/conferma_titolo"
+                android:textColor="@color/jarvis_accento" />
+
+            <TextView
+                android:id="@+id/titolo_conferma"
+                style="@style/Jarvis.TitoloScheda"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_mezzo" />
+
+            <TextView
+                android:id="@+id/corpo_conferma"
+                style="@style/Jarvis.Corpo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_mezzo"
+                android:ellipsize="end"
+                android:maxLines="6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_1"
+                android:gravity="end"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tasto_annulla_conferma"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tocco_minimo"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:text="@string/annulla" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/tasto_si_conferma"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/tocco_minimo"
+                    android:layout_marginStart="@dimen/spazio_1"
+                    android:backgroundTint="@color/jarvis_accento"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:letterSpacing="0"
+                    android:text="@string/conferma"
+                    android:textAllCaps="false"
+                    android:textColor="@color/jarvis_su_accento"
+                    app:cornerRadius="@dimen/raggio_pillola" />
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

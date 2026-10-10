@@ -1,0 +1,68 @@
+name: Problema su un telefono
+description: JBoss non funziona (o funziona male) sul tuo telefono
+title: "[telefono] "
+labels: ["compatibilità"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Grazie. Non scrivere dati personali: niente nomi, numeri di telefono, indirizzi mail, password o testi dei messaggi.
+        Per marca, modello e versione puoi usare `bash scripts/info-telefono.sh` (serve il cavo USB e il «Debug USB»),
+        oppure copiarli da Impostazioni del telefono → Info telefono.
+  - type: input
+    id: telefono
+    attributes:
+      label: Marca e modello
+      placeholder: "es. Xiaomi Redmi Note 12"
+    validations:
+      required: true
+  - type: input
+    id: android
+    attributes:
+      label: Versione di Android (e interfaccia della marca, se la sai)
+      placeholder: "es. Android 14, HyperOS 1.0"
+    validations:
+      required: true
+  - type: input
+    id: versione
+    attributes:
+      label: Versione di JBoss
+      description: Impostazioni di JBoss → Informazioni · Licenze
+      placeholder: "es. 0.7.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: google
+    attributes:
+      label: Il telefono ha i servizi Google (Play Store)?
+      options: ["Sì", "No", "Non lo so"]
+    validations:
+      required: true
+  - type: dropdown
+    id: dove
+    attributes:
+      label: Dove succede
+      multiple: true
+      options:
+        - Installazione o primo avvio
+        - Permessi guidati (accessibilità, batteria, microfono)
+        - Parola «Hey Boss» o voce
+        - Un comando (apri app, messaggio, mail, chiamata)
+        - Conferma Invia / Annulla
+        - Postino o VPS
+        - L'app si chiude da sola
+        - Altro
+    validations:
+      required: true
+  - type: textarea
+    id: passi
+    attributes:
+      label: Cosa hai fatto e cosa è successo
+      description: I passi, cosa ti aspettavi e cosa è successo invece. Una foto dello schermo aiuta (senza dati personali).
+    validations:
+      required: true
+  - type: textarea
+    id: info
+    attributes:
+      label: Uscita di scripts/info-telefono.sh (facoltativo)
+      render: text

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La barra di scrittura degli agenti (2026-10-10), uguale a quella della webapp Jarvis e in TUTTE le chat dell'app
+     (JBoss, Postino, Ricercatore web, Social, Mani, Scrittore):
+     ╭────────────────────────────────────────╮
+     │ Scrivi a <agente>: «esempio», «esempio»… │  (🎤)  (📞)  (↑)
+     ╰────────────────────────────────────────╯  Parla Chiama Invia
+     🎤 Parla  = dettatura nel campo, poi invio (tondo beige)
+     📞 Chiama = conversazione a mani libere con questo agente (tondo verde chiaro; verde pieno durante la chiamata)
+     ↑ Invia   = manda il testo del campo (tondo rame pieno). Anche «Invio» della tastiera manda. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/riga_composizione"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/spazio_1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/campo_frase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_barra_campo"
+        android:hint="@string/scrivi_a_jarvis"
+        android:imeOptions="actionSend"
+        android:importantForAutofill="no"
+        android:inputType="textCapSentences|textMultiLine"
+        android:maxLines="4"
+        android:minHeight="@dimen/tocco_minimo"
+        android:paddingStart="@dimen/spazio_2"
+        android:paddingTop="@dimen/spazio_1"
+        android:paddingEnd="@dimen/spazio_2"
+        android:paddingBottom="@dimen/spazio_1"
+        android:textColor="@color/jarvis_testo"
+        android:textColorHint="@color/jarvis_testo_tenue"
+        android:textSize="@dimen/testo_corpo" />
+
+    <ImageButton
+        android:id="@+id/tasto_parla"
+        style="@style/Jarvis.Icona"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/bg_barra_parla"
+        android:contentDescription="@string/barra_parla"
+        android:src="@drawable/ic_mic"
+        android:tooltipText="@string/barra_parla"
+        app:tint="@color/barra_parla_icona" />
+
+    <ImageButton
+        android:id="@+id/tasto_chiama"
+        style="@style/Jarvis.Icona"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/bg_barra_chiama"
+        android:contentDescription="@string/barra_chiama"
+        android:src="@drawable/ic_telefono"
+        android:tooltipText="@string/barra_chiama"
+        app:tint="@color/barra_chiama_icona" />
+
+    <ImageButton
+        android:id="@+id/tasto_invia"
+        style="@style/Jarvis.Icona"
+        android:layout_marginStart="@dimen/spazio_1"
+        android:background="@drawable/bg_icona_piena"
+        android:contentDescription="@string/barra_invia"
+        android:src="@drawable/ic_freccia_su"
+        android:tooltipText="@string/barra_invia"
+        app:tint="@color/jarvis_su_accento" />
+</LinearLayout>

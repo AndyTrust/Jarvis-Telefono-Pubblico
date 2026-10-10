@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La mail aperta nel Postino (0.5.0, Boss 08/10/2026). Copre la lista; sotto restano la conferma
+     Invia/Annulla e il campo, che qui parla con JBoss («rispondi che arrivo lunedì»).
+     ┌──────────────────────────────────┐
+     │ ‹ Lista        7 di 19     ◀  ▶ │
+     │ Fornitore Prova                  │
+     │ noreply@… · jarvis · 08/10 09:42 │
+     │ Fattura n. 77 del 08/10/2026     │
+     │ In breve: due righe, prima di    │
+     │ scegliere (0.6.6)                │
+     │ [Rispondi]   [Fatto]   [Dopo]    │
+     │ [Archivia]   [Spam…]  [Elimina…] │
+     │ ┌ Riassunto (3-5 righe) ───────┐ │
+     │ Allegati: fattura-77.pdf · 1 KB  │
+     │ Archivio in [Fatture-Fornitori▾] │
+     │ ┌ Bozza a [________] testo… ───┐ │
+     │ │ [Salva bozza]      [Invia]   │ │
+     │ ▸ Testo della mail               │
+     └──────────────────────────────────┘ -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dettaglio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/jarvis_fondo"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/postino_spazio_1"
+        android:paddingEnd="@dimen/postino_spazio_1">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dettChiudi"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/postino_tocco_minimo"
+            android:text="‹ Lista"
+            android:textAllCaps="false" />
+
+        <TextView
+            android:id="@+id/dettPosizione"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/jarvis_testo_tenue"
+            android:textSize="13sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dettPrecedente"
+            style="@style/Jarvis.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Mail precedente"
+            android:minWidth="@dimen/postino_tocco_minimo"
+            android:minHeight="@dimen/postino_tocco_minimo"
+            android:text="◀" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/dettSuccessiva"
+            style="@style/Jarvis.Button.Outlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/postino_spazio_1"
+            android:contentDescription="Mail successiva"
+            android:minWidth="@dimen/postino_tocco_minimo"
+            android:minHeight="@dimen/postino_tocco_minimo"
+            android:text="▶" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/dettScorri"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/postino_spazio_2"
+            android:paddingEnd="@dimen/postino_spazio_2"
+            android:paddingBottom="@dimen/postino_spazio_2">
+
+            <TextView
+                android:id="@+id/dettDa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jarvis_testo"
+                android:textIsSelectable="true"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dettInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jarvis_testo_tenue"
+                android:textIsSelectable="true"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/dettOggetto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:textColor="@color/jarvis_testo"
+                android:textIsSelectable="true"
+                android:textSize="15sp" />
+
+            <!-- 0.6.6: il riassunto in due righe, visibile prima di scegliere l'azione. -->
+            <TextView
+                android:id="@+id/dettBreve"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_mezzo"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textColor="@color/jarvis_testo_tenue"
+                android:textSize="14sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettRispondi"
+                    style="@style/Jarvis.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Rispondi"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettFatto"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/postino_spazio_1"
+                    android:contentDescription="Fatto: segna letta e archivia"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Fatto"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettDopo"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/postino_spazio_1"
+                    android:contentDescription="Dopo: resta in arrivo"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Dopo"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettArchivia"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Archivia"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettSpam"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/postino_spazio_1"
+                    android:contentDescription="Spam, con conferma"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Spam…"
+                    android:textAllCaps="false" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/dettCestina"
+                    style="@style/Jarvis.Button.Outlined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/postino_spazio_1"
+                    android:contentDescription="Elimina, con conferma"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo"
+                    android:text="Elimina…"
+                    android:textAllCaps="false" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dettRiassunto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:background="@drawable/postino_pillola"
+                android:lineSpacingExtra="2dp"
+                android:padding="@dimen/postino_spazio_2"
+                android:textColor="@color/jarvis_testo"
+                android:textIsSelectable="true"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/dettAllegati"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:textColor="@color/jarvis_testo_tenue"
+                android:textIsSelectable="true"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Archivio in "
+                    android:textColor="@color/jarvis_testo_tenue"
+                    android:textSize="13sp" />
+
+                <Spinner
+                    android:id="@+id/dettCartella"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:minHeight="@dimen/postino_tocco_minimo" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/dettPerche"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jarvis_testo_tenue"
+                android:textSize="12sp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/dettBozza"
+                style="@style/Jarvis.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_1"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/bozzaTitolo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/jarvis_testo"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/bozzaA"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/postino_spazio_mezzo"
+                        android:background="@drawable/postino_campo"
+                        android:hint="A: indirizzo"
+                        android:importantForAutofill="no"
+                        android:inputType="textEmailAddress"
+                        android:minHeight="@dimen/postino_tocco_minimo"
+                        android:paddingStart="@dimen/postino_spazio_2"
+                        android:paddingEnd="@dimen/postino_spazio_2"
+                        android:textColor="@color/jarvis_testo"
+                        android:textColorHint="@color/jarvis_testo_tenue"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/bozzaTesto"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/postino_spazio_1"
+                        android:background="@drawable/postino_campo"
+                        android:gravity="top|start"
+                        android:hint="Testo della bozza"
+                        android:importantForAutofill="no"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:minLines="3"
+                        android:padding="@dimen/postino_spazio_2"
+                        android:textColor="@color/jarvis_testo"
+                        android:textColorHint="@color/jarvis_testo_tenue"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/bozzaStato"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/postino_spazio_mezzo"
+                        android:textColor="@color/jarvis_testo_tenue"
+                        android:textSize="12sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/postino_spazio_1"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/bozzaSalva"
+                            style="@style/Jarvis.Button.Outlined"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:minHeight="@dimen/postino_tocco_minimo"
+                            android:text="Salva bozza"
+                            android:textAllCaps="false" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/bozzaInvia"
+                            style="@style/Jarvis.Button"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/postino_spazio_1"
+                            android:layout_weight="1"
+                            android:minHeight="@dimen/postino_tocco_minimo"
+                            android:text="Invia"
+                            android:textAllCaps="false" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/dettTestoTitolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/postino_spazio_2"
+                android:minHeight="@dimen/postino_tocco_minimo"
+                android:gravity="center_vertical"
+                android:text="▸ Testo della mail"
+                android:textColor="@color/jarvis_accento"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/dettTesto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/jarvis_testo"
+                android:textIsSelectable="true"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

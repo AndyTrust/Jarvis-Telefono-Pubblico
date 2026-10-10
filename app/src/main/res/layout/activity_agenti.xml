@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Schermata Agenti, 0.6.1 (layout approvato da Boss il 08/10): un elenco compatto.
+     ←  Agenti
+     ◉ JBoss (capo)   ● pronto          ›
+     ◉ Postino        ● VPS collegata   ›
+     ◉ Ricercatore    ● VPS collegata   ›
+     ◉ Social         ● VPS collegata   ›
+     ◉ Mani           ● pronte          ›
+     ◉ Scrittore      ● pronto          ›
+     ───────────────────────────────────
+     Ogni invio parte solo dopo «Invia».
+     tocco = chat · pressione lunga = scheda (missione, dove lavora, autonomia) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/jarvis_fondo"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spazio_1"
+        android:paddingTop="@dimen/spazio_1"
+        android:paddingEnd="@dimen/spazio_2">
+
+        <ImageButton
+            android:id="@+id/tasto_indietro"
+            style="@style/Jarvis.Icona"
+            android:contentDescription="@string/indietro"
+            android:src="@drawable/ic_indietro" />
+
+        <TextView
+            style="@style/Jarvis.Titolo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spazio_1"
+            android:layout_weight="1"
+            android:text="@string/agenti" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scorri_agenti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/spazio_2"
+        android:paddingEnd="@dimen/spazio_2"
+        android:paddingBottom="@dimen/spazio_3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/lista_schede"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/bordo"
+                android:layout_marginTop="@dimen/spazio_1"
+                android:background="@color/jarvis_linea" />
+
+            <TextView
+                style="@style/Jarvis.Piccolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_1"
+                android:text="@string/agenti_nota_invio" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una frase di Boss: bolla piccola a destra (schema Grok, 3a punto 6). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="end"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/spazio_1"
+    android:paddingBottom="@dimen/spazio_mezzo">
+
+    <TextView
+        android:id="@+id/testo"
+        style="@style/Jarvis.Corpo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:background="@drawable/bg_frase_boss"
+        android:paddingStart="@dimen/spazio_2"
+        android:paddingTop="@dimen/spazio_1"
+        android:paddingEnd="@dimen/spazio_2"
+        android:paddingBottom="@dimen/spazio_1"
+        android:textIsSelectable="true" />
+
+    <TextView
+        android:id="@+id/chi_quando"
+        style="@style/Jarvis.Piccolo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp" />
+</LinearLayout>

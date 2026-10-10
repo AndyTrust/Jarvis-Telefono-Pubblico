@@ -1,0 +1,44 @@
+JBoss (pacchetto com.jarvis.telefono)
+Licenza del codice di JBoss: GNU General Public License versione 3 (file LICENSE).
+JBoss è il nome di questa app Android, non è affiliata a Red Hat né al server applicativo JBoss.
+
+JBoss usa componenti di altri. Ognuno resta con la sua licenza; qui sotto l'elenco, con la fonte.
+Chi ridistribuisce JBoss deve tenere questo file e le licenze indicate.
+
+COMPILATI DENTRO L'APP
+- AndroidX core-ktx 1.13.1, appcompat 1.7.0, constraintlayout 2.1.4 (Google, Android Open Source Project)
+  Apache License 2.0 · https://developer.android.com/jetpack/androidx
+- Material Components for Android 1.12.0 (Google) · Apache License 2.0
+- Kotlin standard library e kotlinx-coroutines 1.8.1 (JetBrains) · Apache License 2.0
+- OkHttp 4.12.0 (Square) · Apache License 2.0
+- Apache Commons Compress 1.28.0 (Apache Software Foundation) · Apache License 2.0
+- sherpa-onnx 1.13.8, AAR ufficiale (k2-fsa) · Apache License 2.0 · https://github.com/k2-fsa/sherpa-onnx
+  contiene ONNX Runtime (Microsoft) · MIT License
+- Firebase Cloud Messaging (Google, BOM 33.1.2) · Apache License 2.0 per l'SDK Firebase; usa librerie di
+  Google Play Services. Senza il file google-services.json (che non è nel repository) non si attiva.
+- Google Play Services Code Scanner 16.1.0 (Google) · licenza di Google per l'Android SDK, NON libera.
+  Serve solo al pulsante «Scansiona QR»; senza i servizi Google l'app usa «Incolla».
+
+MODELLI NELL'APK (cartella app/src/main/assets)
+- kws-model: modello di parola di attivazione zipformer distribuito da sherpa-onnx (k2-fsa) · Apache License 2.0
+  (verificare la scheda del modello prima di ogni release)
+- voce/silero_vad.onnx: Silero VAD (Silero Team) · MIT License
+- voce/gtcrn_simple.onnx: GTCRN, riduzione del rumore (Xiaobin Rong e altri) · MIT License
+
+MODELLI SCARICATI DALL'APP SOLO SE L'UTENTE LO CHIEDE (da github.com/k2-fsa/sherpa-onnx)
+- Whisper small (OpenAI), conversione sherpa-onnx · MIT License
+- 3D-Speaker ERes2Net, impronta della voce (Alibaba DAMO / modelscope) · Apache License 2.0
+
+IMMAGINI
+- Personaggi (JBoss, Postino, Ricercatore web, Social, Mani, Scrittore): varianti generate con IA a partire dai Dots
+  di OpenDots / CopilotKit, Copyright (c) Atai Barkai · MIT License (testo completo in
+  app/src/main/res/raw/licenza_opendots.txt, mostrato anche in Impostazioni → Informazioni · Licenze).
+
+NOTA SULLA COMPATIBILITÀ
+Le licenze Apache 2.0 e MIT sono compatibili con la GPL versione 3. Le librerie Google Play services, ML Kit (lettore
+QR) e Firebase hanno una licenza di Google non libera: per questo il file LICENSE contiene, in fondo, un PERMESSO
+AGGIUNTIVO secondo la sezione 7 della GPLv3 che consente di distribuire JBoss collegato a quelle librerie, senza doverne
+dare il codice sorgente. Su un telefono senza servizi Google quelle parti non funzionano e l'app lo dice («Incolla»
+al posto del QR, nessuna notifica push dalla VPS).
+Alternativa valutata e scartata: ZXing (Apache 2.0) per il QR. Avrebbe tolto solo una delle librerie Google
+(Firebase resta) e aggiunto il permesso della fotocamera all'app; il permesso aggiuntivo serviva comunque.

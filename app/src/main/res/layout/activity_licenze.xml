@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Info e licenze (0.2.0): l'avviso MIT dei Dots di OpenDots, obbligatorio con le immagini. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/jarvis_fondo"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/spazio_1"
+        android:paddingTop="@dimen/spazio_1"
+        android:paddingEnd="@dimen/spazio_2">
+
+        <ImageButton
+            android:id="@+id/tasto_indietro"
+            style="@style/Jarvis.Icona"
+            android:contentDescription="@string/indietro"
+            android:src="@drawable/ic_indietro" />
+
+        <TextView
+            style="@style/Jarvis.Titolo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spazio_1"
+            android:layout_weight="1"
+            android:text="@string/info_licenze" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="@dimen/spazio_2"
+        android:paddingEnd="@dimen/spazio_2"
+        android:paddingBottom="@dimen/spazio_3"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Jarvis.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/JarvisSectionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/licenze_personaggi" />
+
+                    <TextView
+                        android:id="@+id/testo_attribuzione"
+                        style="@style/Jarvis.Corpo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textIsSelectable="true" />
+
+                    <TextView
+                        style="@style/Jarvis.Piccolo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spazio_1"
+                        android:text="@string/licenze_quali" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Jarvis.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_2">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/JarvisSectionTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/licenze_mit" />
+
+                    <TextView
+                        android:id="@+id/testo_mit"
+                        style="@style/Jarvis.Piccolo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/jarvis_testo"
+                        android:textIsSelectable="true" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/testo_versione_licenze"
+                style="@style/Jarvis.Piccolo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spazio_2" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

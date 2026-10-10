@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">JBoss</string>
+    <string name="accessibility_service_description">Permette a JBoss di toccare, scrivere e leggere lo schermo quando glielo chiedi tu, dal telefono o a voce. Non agisce mai da solo senza un comando.</string>
+
+    <!-- Schermata principale. Il nome dell'app è JBoss (Boss 07/10). Parole di attivazione dalla 0.6.0: «Hey Boss» e «Hey JBoss». -->
+    <string name="scrivi_a_jarvis">Scrivi o detta a JBoss…</string>
+    <string name="invia_a_jarvis">Invia</string>
+    <string name="detta">Detta</string>
+    <string name="cronologia">Cronologia</string>
+    <string name="cronologia_vuota">Ancora niente. Di\' «Hey Boss», scrivi qui sotto o tocca Detta.</string>
+    <string name="voce_e_telefono">JBoss</string>
+    <string name="titolo">JBoss</string>
+    <string name="nome_capo">JBoss</string>
+    <string name="parole_chiave">«Hey Boss» e «Hey JBoss»</string>
+    <string name="ultimo_scambio">Ultimo scambio</string>
+    <string name="etichetta_impronta">Impronta</string>
+    <string name="etichetta_whisper">Voce senza rete</string>
+    <string name="etichetta_glossario">Glossario</string>
+    <string name="etichetta_batteria">Batteria</string>
+    <string name="accendi">Accendi</string>
+    <string name="spegni">Spegni</string>
+    <string name="impostazioni">Impostazioni</string>
+    <string name="descrizione_spia">Stato dell\'ascolto</string>
+    <string name="serve_microfono">Senza il permesso microfono «Hey JBoss» non può funzionare</string>
+
+    <!-- Impostazioni -->
+    <string name="salva">Salva</string>
+    <string name="sezione_configurazione">Configurazione personale</string>
+    <string name="spiega_configurazione">Ogni valore si cambia qui e vale dal prossimo ascolto, senza riavviare.</string>
+
+    <string name="sezione_permessi">Permessi</string>
+    <string name="permesso_microfono">Microfono</string>
+    <string name="permesso_notifiche">Notifiche</string>
+    <string name="spiega_accessibilita">Se resta grigia: Impostazioni → Applicazioni → JBoss → ⋮ → Consenti impostazioni con restrizioni</string>
+    <string name="spiega_spegnere">Per togliere un permesso si apre la pagina di JBoss in Android: l\'app non può toglierselo da sola.</string>
+    <string name="permesso_accessibilita">Può usare il telefono</string>
+    <string name="permesso_batteria">App mai in sospensione</string>
+    <string name="spiega_batteria">Senza questa esclusione il risparmio batteria (Samsung, Xiaomi, OnePlus e altri) ferma il servizio di notte e «Hey JBoss» smette di rispondere.</string>
+    <string name="concedi">Concedi</string>
+    <string name="apri_impostazioni">Apri impostazioni</string>
+    <string name="dopo">Dopo</string>
+    <string name="primo_batteria_titolo">JBoss mai in sospensione</string>
+    <string name="primo_batteria_testo">Metti JBoss fra le «app mai in sospensione».\nSenza, Android ferma il servizio di notte e «Hey JBoss» smette di rispondere.</string>
+    <string name="apri">Apri</string>
+
+    <string name="sezione_modelli">Modelli della voce</string>
+    <string name="scarica_modelli">Scarica i modelli (375 MB + 40 MB, solo Wi-Fi)</string>
+    <string name="annulla">Annulla</string>
+    <string name="serve_wifi">Serve una rete non a consumo (Wi-Fi): lo scarico non parte</string>
+
+    <string name="sezione_tecnico">Modo tecnico</string>
+    <string name="spiega_tecnico">Lo accende chi sviluppa l\'app, dal computer o dal Collegamento Jarvis. Le diagnosi restano nel telefono e non vanno a nessuno.</string>
+    <string name="tecnico_acceso">acceso: il telefono tiene diagnosi in più</string>
+    <string name="tecnico_spento">spento</string>
+
+    <string name="sezione_versione">Versione</string>
+    <string name="versione_app">JBoss %1$s (%2$d)</string>
+    <string name="percento">%1$d %%</string>
+
+    <string name="si">Sì</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
+    <!-- 0.2.0: agenti, tema Claude, spazio del modulo VPS -->
+    <string name="parla">Parla</string>
+    <string name="parla_spento">JBoss è spento o la voce non è pronta: accendilo e riprova</string>
+    <string name="detta_stop">Ferma il dettato</string>
+    <string name="jarvis_capo">Il capo: riceve ogni richiesta e la passa all\'agente giusto</string>
+    <string name="jarvis_avatar">JBoss: tocca per parlare, tieni premuto per la squadra</string>
+    <string name="capo">Capo</string>
+    <string name="capo_missione">Riceve ogni richiesta e la passa all\'agente giusto</string>
+    <string name="capo_spiegazione">Si parla sempre a JBoss (campo, Detta, Parla, «Hey Boss»). Lui passa il lavoro per competenza; quello che non è di nessuno lo fa lui.</string>
+    <string name="agenti">Agenti</string>
+    <string name="indietro">Indietro</string>
+    <string name="dove_gira">Dove lavora</string>
+    <string name="agenti_nota_invio">Ogni invio parte solo dopo «Invia». Tieni premuto un agente per la sua scheda e l\'autonomia.</string>
+    <string name="autonomia">Autonomia</string>
+    <string name="autonomia_chiedi">Chiedi prima</string>
+    <string name="autonomia_da_solo">Vai da solo</string>
+    <string name="autonomia_bloccata_breve">bloccato</string>
+    <string name="autonomia_bloccata">«Vai da solo» è bloccato per questo agente: decide sempre Boss.</string>
+    <string name="autonomia_nota">Ogni invio (messaggi, mail) parte solo dal telefono, dopo Invia o «invia» di Boss, qualunque sia l\'autonomia.</string>
+    <string name="autonomia_nota_bloccata">Bloccato su «chiedi prima»: ogni passo che cambia qualcosa lo decidi tu. Ogni invio parte solo dal telefono, dopo «Invia».</string>
+    <string name="autonomia_nota_ricercatore">«Vai da solo» vale solo per le ricerche in sola lettura: quando la VPS chiede di leggere una fonte, il Ricercatore prosegue senza chiederti. Invii, scritture e cancellazioni li decidi sempre tu.</string>
+    <string name="info_licenze">Info e licenze</string>
+    <string name="licenze_personaggi">Personaggi</string>
+    <string name="licenze_quali">Usati nell\'app: JBoss, il capo (file «Jarvis» del pacchetto; anche icona dell\'app), Postino, Ricercatore web, Social, Mani (Manutentore), Scrittore (Marketing). WebP da 128 e 256 px.</string>
+    <string name="licenze_mit">Licenza MIT</string>
+    <string name="vps_lavori">Lavori sulla VPS</string>
+    <string name="lavori">Lavori</string>
+    <string name="lavori_n">Lavori %1$d</string>
+    <string name="esito_eseguito">✓ eseguito</string>
+    <string name="esito_risposto">✓ fatto</string>
+    <string name="esito_non_capito">\? non capito</string>
+    <string name="esito_annullato">annullato, niente inviato</string>
+    <string name="esito_errore">! errore</string>
+    <string name="esito_in_corso_vps">◐ in corso sulla VPS</string>
+    <string name="esito_in_coda_vps">in coda per la VPS</string>
+    <string name="tu">Tu</string>
+    <string name="postino">Postino</string>
+    <string name="postino_non_collegato">non collegato</string>
+    <string name="postino_in_corso">◐ in corso</string>
+    <string name="postino_in_corso_vps">◐ sulla VPS</string>
+    <string name="postino_pronto">pronto</string>
+    <string name="postino_nuove">%1$d da fare · %2$s</string>
+    <string name="cerca_cronologia">Cerca nella cronologia</string>
+    <string name="filtro_tutti">Tutti</string>
+    <string name="chat_di">Chat di %1$s</string>
+    <string name="scrivi_a_agente">Scrivi a %1$s…</string>
+    <string name="chat_esterno">%1$s lavora sulla VPS e il Collegamento Jarvis è spento: accendilo in Impostazioni, Collegamento Jarvis. Intanto JBoss fa col telefono quello che sa.</string>
+    <string name="chat_esterno_collegato">%1$s lavora sulla VPS, con il Collegamento Jarvis acceso. Ogni invio chiede la tua conferma.</string>
+    <string name="chat_scrittore">Lo Scrittore prepara testi e bozze con il cervello di JBoss. Niente parte senza il tuo «Invia».</string>
+    <string name="chat_non_attivo">%1$s non è ancora attivo: quello che scrivi va a JBoss, che lo passa a chi sa farlo.</string>
+    <string name="chat_mani">Mani usa le app del telefono. Ogni invio chiede conferma.</string>
+    <string name="chat_vuota">Ancora niente con %1$s.</string>
+    <string name="cronologia_niente_filtro">Niente con questo filtro.</string>
+    <string name="dettaglio_riga">Cervello: %1$s · %2$s · esito: %3$s</string>
+    <string name="modelli_gia_presenti">I modelli sono già tutti sul telefono: niente da scaricare</string>
+    <string name="importa_modelli">Prendi i file già copiati</string>
+    <string name="nota_importa">Senza rete: chi ti aiuta dal computer copia i file nel telefono, poi tocca qui. I modelli dell\'app vecchia non valgono qui: ogni app ha i suoi.</string>
+    <string name="importa_niente">Nel telefono non ci sono ancora i file della voce: vanno copiati prima dal computer.</string>
+    <string name="importa_fatto">Modelli importati: %1$d file copiati, la voce li usa dalla prossima frase</string>
+    <string name="importa_in_corso">Importo i modelli…</string>
+    <!-- 0.7.0: la chat che esegue i comandi (riga di stato, box di conferma, servizio in secondo piano) -->
+    <string name="comando_in_corso">JBoss sta lavorando…</string>
+    <string name="comando_notifica_titolo">JBoss sta lavorando</string>
+    <string name="comando_canale">Comandi in corso</string>
+    <string name="conferma">Conferma</string>
+    <string name="conferma_titolo">Serve il tuo sì</string>
+    <string name="conferma_scaduta">La conferma non è più in attesa: niente è partito.</string>
+
+    <!-- 0.6.7 card: Impostazioni a card (layout approvato da Boss il 09/10). -->
+    <string name="imp_profilo">JBoss · %1$s</string>
+    <string name="imp_aggiorna">Aggiorna</string>
+    <string name="imp_licenze">Licenze</string>
+    <string name="imp_voce">Voce</string>
+    <string name="imp_posta">Postino e mail</string>
+    <string name="imp_collegamento">Collegamento Jarvis</string>
+    <string name="imp_webapp">Webapp</string>
+    <string name="imp_lavori">Lavori</string>
+    <string name="imp_memoria">Memoria</string>
+    <string name="imp_account">Account e accessi</string>
+    <string name="imp_account_sotto">cervello, accessi siti, Google</string>
+    <string name="imp_sicurezza">Sicurezza</string>
+    <string name="imp_aspetto">Aspetto</string>
+    <string name="imp_info">Informazioni · Licenze</string>
+    <string name="imp_rifai">Rifai configurazione</string>
+    <string name="imp_rifai_sotto">la procedura guidata dall\'inizio</string>
+    <string name="imp_punto">·</string>
+
+    <!-- 0.7.1: Home con gli avatar in riga e chat a tutto schermo per ogni agente. -->
+    <string name="chat_jboss_avatar">JBoss: tocca per aprire la chat, tieni premuto per la squadra</string>
+    <string name="apri_webapp_jarvis">Apre la webapp di «Jarvis»</string>
+    <string name="chat_impostazioni_agente">Impostazioni dell\'agente</string>
+    <string name="chat_con_postino">Ora parli con il Postino</string>
+    <string name="chat_con_postino_avviso">Le tue frasi vanno al Postino: «leggi le mail», «avanti», «cancella questa», «aggiorna la posta». Di\' «torna a JBoss» per tornare. Ogni cancellazione parte solo dal tuo tocco su Elimina.</string>
+    <string name="chat_jboss_avviso">JBoss fa da sé o passa il lavoro all\'agente giusto. Ogni invio, pagamento o cancellazione parte solo dopo il tuo tocco su Invia.</string>
+    <string name="chat_parla_senza_riconoscitore">Questo telefono non ha il riconoscimento vocale di Google. Scarica la voce senza rete in Impostazioni → Voce (circa 415 MB, una volta), oppure scrivi.</string>
+    <string name="chat_parla_non_parte">Il microfono non parte: controlla il permesso in Impostazioni → Voce.</string>
+    <!-- 2026-10-10: la barra degli agenti, uguale in tutte le chat -->
+    <string name="barra_parla">Parla: detta nel campo e invia</string>
+    <string name="barra_chiama">Chiama: conversazione a mani libere</string>
+    <string name="barra_chiama_fine">Chiudi la chiamata</string>
+    <string name="barra_invia">Invia</string>
+    <string name="missione_capo">Riceve ogni richiesta e la passa all\'agente giusto</string>
+</resources>

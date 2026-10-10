@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Anello che ruota intorno all'avatar che lavora: una coda che sfuma (gradiente a ventaglio). -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="ring"
+    android:innerRadiusRatio="2.25"
+    android:thickness="3dp"
+    android:useLevel="false">
+    <gradient
+        android:type="sweep"
+        android:startColor="#00B4532F"
+        android:endColor="@color/jarvis_accento" />
+</shape>

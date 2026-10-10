@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 0.4.0: un campo delle schermate di configurazione. Tipo, suggerimento e autofill li mette il codice (ui/Mattoni.kt). -->
+<com.google.android.material.textfield.TextInputLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="8dp"
+    android:textColorHint="@color/jarvis_testo_tenue"
+    app:boxStrokeColor="@color/jarvis_accento"
+    app:hintTextColor="@color/jarvis_accento"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/tocco_minimo"
+        android:textColor="@color/jarvis_testo"
+        android:textSize="15sp" />
+</com.google.android.material.textfield.TextInputLayout>

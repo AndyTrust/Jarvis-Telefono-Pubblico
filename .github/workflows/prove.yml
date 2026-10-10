@@ -1,0 +1,23 @@
+name: Prove
+
+# A ogni modifica: prove sulla JVM e compilazione. Nessun segreto, nessuna pubblicazione:
+# l'APK firmato si fa sul computer di chi pubblica (vedi pubblica.sh).
+on:
+  push:
+    branches: [main]
+  pull_request: {}
+  workflow_dispatch: {}
+
+jobs:
+  prove:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - name: Prove
+        run: ./gradlew test --no-daemon
+      - name: Compilazione
+        run: ./gradlew :app:assembleDebug --no-daemon

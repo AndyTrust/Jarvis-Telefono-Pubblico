@@ -1,0 +1,2 @@
+# Copia in local.properties (fuori da git). Jarvis Telefono non ha indirizzi né token.
+sdk.dir=/percorso/android-sdk

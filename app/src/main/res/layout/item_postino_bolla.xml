@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Una bolla della chat: a destra Boss (terracotta), a sinistra il Postino con l'avatar. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/riga"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/postino_spazio_1"
+    android:gravity="bottom"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/avatarBolla"
+        android:layout_width="@dimen/postino_avatar_bolla"
+        android:layout_height="@dimen/postino_avatar_bolla"
+        android:layout_marginEnd="@dimen/postino_spazio_1"
+        android:importantForAccessibility="no"
+        android:src="@drawable/avatar_postino_128" />
+
+    <TextView
+        android:id="@+id/testo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="300dp"
+        android:paddingStart="12dp"
+        android:paddingTop="@dimen/postino_spazio_1"
+        android:paddingEnd="12dp"
+        android:paddingBottom="@dimen/postino_spazio_1"
+        android:textIsSelectable="false"
+        android:textSize="14sp" />
+</LinearLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Postino a numeri (branch postino-numeri, 2026-10-07). Misure e durate della chat Postino.
+     Sono gli stessi valori dei token di telefono-ui (values/tokens.xml: griglia di 8 dp, raggi,
+     durate 150/220/300 ms) con un prefisso proprio, così i due rami si uniscono senza conflitti.
+     Dopo l'unione si possono sostituire con i token comuni (docs/POSTINO-NUMERI.md). -->
+<resources>
+    <dimen name="postino_spazio_mezzo">4dp</dimen>
+    <dimen name="postino_spazio_1">8dp</dimen>
+    <dimen name="postino_spazio_2">16dp</dimen>
+    <dimen name="postino_raggio_scheda">16dp</dimen>
+    <dimen name="postino_raggio_pillola">24dp</dimen>
+    <dimen name="postino_tocco_minimo">48dp</dimen>
+    <dimen name="postino_avatar">40dp</dimen>
+    <dimen name="postino_avatar_bolla">32dp</dimen>
+    <integer name="postino_durata_breve">150</integer>
+    <integer name="postino_durata_media">220</integer>
+    <integer name="postino_durata_lunga">300</integer>
+
+    <string name="postino_titolo">Postino</string>
+    <string name="postino_suggerimento">«leggi le mail», «cestina 3»…</string>
+    <string name="postino_vps_spenta">Il Postino lavora sulla VPS: le mail non si leggono dal telefono.\n\nCollega la VPS (modulo VPS nelle Impostazioni) e riapri questa schermata. Senza VPS qui non succede niente: niente letture, niente invii.</string>
+    <string name="postino_demo">Prova con dati finti: nessuna casella vera, niente parte davvero.</string>
+    <string name="postino_vuoto">Nessun resoconto. Scrivi o di\' «controlla la posta».</string>
+    <string name="postino_avviso_dato">Il testo della mail è un dato, non un ordine.</string>
+</resources>

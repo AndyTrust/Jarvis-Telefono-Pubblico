@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- La cronologia con filtro e ricerca (0.2.0): la stessa vista nella Home e nella chat di un
+     agente (lì il filtro è fisso sull'agente e i chip non si vedono). Righe da ui/RigheCronologia. -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/JarvisSectionTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingBottom="0dp"
+            android:text="@string/cronologia" />
+
+        <ImageButton
+            android:id="@+id/tasto_cerca"
+            style="@style/Jarvis.Icona"
+            android:contentDescription="@string/cerca_cronologia"
+            android:src="@drawable/ic_cerca"
+            app:tint="@color/jarvis_testo_tenue" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/campo_cerca"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_campo"
+        android:hint="@string/cerca_cronologia"
+        android:imeOptions="actionSearch"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:minHeight="@dimen/tocco_minimo"
+        android:paddingStart="@dimen/spazio_2"
+        android:paddingEnd="@dimen/spazio_2"
+        android:textColor="@color/jarvis_testo"
+        android:textColorHint="@color/jarvis_testo_tenue"
+        android:textSize="@dimen/testo_corpo"
+        android:visibility="gone" />
+
+    <HorizontalScrollView
+        android:id="@+id/scorri_filtri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/filtri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipSpacingHorizontal="@dimen/spazio_1"
+            app:selectionRequired="true"
+            app:singleLine="true"
+            app:singleSelection="true" />
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:id="@+id/scorri_cronologia"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/lista_cronologia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/spazio_1" />
+    </ScrollView>
+</LinearLayout>

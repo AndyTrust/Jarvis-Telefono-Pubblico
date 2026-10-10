@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Il binario dell'interruttore: verde tenue acceso, grigio spento. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:alpha="0.5" android:color="@color/spia_verde" android:state_checked="true" />
+    <item android:color="@color/spia_grigio" />
+</selector>
